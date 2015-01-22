@@ -31,9 +31,15 @@ def make_chains(corpus):
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
-    allkeys = markov_dict.keys()
-    key1 = random.choice(allkeys)
-    print key1
+    allkeys = chains.keys()
+    key = random.choice(allkeys)
+    key1 = key[0]
+    key2 = key[1]
+    value = random.choice(chains[(key1, key2)])
+
+    print key, key1, key2, value
+    
+    # for i in range(10):
 
 
     return "Here's some random text."
