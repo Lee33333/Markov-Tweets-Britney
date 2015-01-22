@@ -28,7 +28,7 @@ def make_chains(corpus):
 
     return markov_dict
 
-def make_text(chains):
+def make_text(chains, wpl, tw):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
     allkeys = chains.keys()
@@ -36,17 +36,21 @@ def make_text(chains):
     key1 = key[0]
     key2 = key[1]
     newtext = key1 + " " + key2
-    i = 0
-    
+    i = 3
+
+     
     while (key1, key2) in chains:
         i = i + 1
         value = random.choice(chains[(key1, key2)])
         newtext = newtext + " " + value
         key1 = key2
         key2 = value
-        if i % 10 == 0:
+        print "wpl:", wpl
+        print "tw:", tw
+        print "i:", i
+        if i % wpl == 0:
             newtext = newtext + "\n"
-        if i > 100 :
+        if i > tw :
             break
        
     return newtext
@@ -58,9 +62,11 @@ def main():
 
     # Change this to read input_text from a file
     input_text = sys.argv[1]
+    total_words = int(sys.argv[3])
+    words_per_line = int(sys.argv[2])
 
     chain_dict = make_chains(input_text)
-    random_text = make_text(chain_dict)
+    random_text = make_text(chain_dict,words_per_line, total_words)
     print random_text
 
 if __name__ == "__main__":
