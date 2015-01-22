@@ -13,17 +13,17 @@ def make_chains(corpus):
     key2=1
     value=2
 
-    for count in range(len(words)):
+    for count in range(len(words)-2):
         
         if (words[key1],words[key2]) in markov_dict:
-            markov_dict[(words[key1],words[key2])]
+            markov_dict[(words[key1],words[key2])] = markov_dict[(words[key1],words[key2])] + [words[value]]
 
         else:
             markov_dict[(words[key1],words[key2])] = [words[value]]
         key1 = key1 + 1
         key2 = key2 + 1
         value = value + 1
-        break
+        
 
     return markov_dict
 
