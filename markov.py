@@ -35,28 +35,28 @@ def make_text(chains):
     key = random.choice(allkeys)
     key1 = key[0]
     key2 = key[1]
-    value = random.choice(chains[(key1, key2)])
-
-    print key, key1, key2, value
+    newtext = key1 + " " + key2
+    # print key, key1, key2, value
     
-    # for i in range(10):
-
-
-    return "Here's some random text."
+    while (key1, key2) in chains:
+        value = random.choice(chains[(key1, key2)])
+        newtext = newtext + " " + value
+        key1 = key2
+        key2 = value
+       
+    return newtext
 
 
 def main():
-    print make_chains("foxbox.txt")
-    print make_text(make_chains("foxbox.txt"))
 
     # args = sys.argv
 
-    # # Change this to read input_text from a file
-    # input_text = "Some text"
+    # Change this to read input_text from a file
+    input_text = sys.argv[1]
 
-    # chain_dict = make_chains(input_text)
-    # random_text = make_text(chain_dict)
-    # print random_text
+    chain_dict = make_chains(input_text)
+    random_text = make_text(chain_dict)
+    print random_text
 
 if __name__ == "__main__":
     main()
