@@ -36,13 +36,18 @@ def make_text(chains):
     key1 = key[0]
     key2 = key[1]
     newtext = key1 + " " + key2
-    # print key, key1, key2, value
+    i = 0
     
     while (key1, key2) in chains:
+        i = i + 1
         value = random.choice(chains[(key1, key2)])
         newtext = newtext + " " + value
         key1 = key2
         key2 = value
+        if i % 10 == 0:
+            newtext = newtext + "\n"
+        if i > 100 :
+            break
        
     return newtext
 
