@@ -45,9 +45,6 @@ def make_text(chains, wpl, tw):
         newtext = newtext + " " + value
         key1 = key2
         key2 = value
-        print "wpl:", wpl
-        print "tw:", tw
-        print "i:", i
         if i % wpl == 0:
             newtext = newtext + "\n"
         if i > tw :
