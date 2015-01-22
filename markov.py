@@ -9,6 +9,7 @@ def make_chains(corpus):
     markov_dict = {}
     infile = open(corpus)
     fulltext = infile.read()
+    fulltext = fulltext.lower()
     words = fulltext.split()
     key1=0
     key2=1
