@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+import random
 
 def make_chains(corpus):
     """Takes an input text as a string and returns a dictionary of
@@ -30,10 +31,17 @@ def make_chains(corpus):
 def make_text(chains):
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
+    allkeys = markov_dict.keys()
+    key1 = random.choice(allkeys)
+    print key1
+
+
     return "Here's some random text."
+
 
 def main():
     print make_chains("foxbox.txt")
+    print make_text(make_chains("foxbox.txt"))
 
     # args = sys.argv
 
